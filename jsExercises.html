@@ -9,7 +9,8 @@
 
       /*
       https://www.codewars.com/kata/58223370aef9fc03fd000071/train/javascript
-      Given a number, return a string with dash'-'marks before and after each odd integer, but do not begin or end the string with a dash mark.
+      Given a number, return a string with dash'-'marks before and after each odd integer, 
+      but do not begin or end the string with a dash mark.
 
       Ex:
 
@@ -45,15 +46,19 @@
 
         /*
         Questions:
-        1. Can you explain why the bottom line works? I can see each step by commenting everything after it, but why does that ensure that odd numbers at the start or end of the string won't have dashes?
+        1. Can you explain why the bottom line .join("").split("-").filter(a => a != "").join("-"); works? 
+	I can see each step by commenting everything after it, but why does that ensure that odd numbers at 
+	the start or end of the string won't have dashes?
 
-        2. In my version, I return 'elem' in two different situations. I kinda feel like that's a bad idea. Is that something that happens, or should be avoided?
+        2. In my version, I return 'elem' in two different situations. I kinda feel like that's a bad idea. 
+	Is it common to return elem more than once, or should that be avoided? 
         */
 //-------------------------------------------------------------------------------------------------------------------------
 
       /*
       https://www.codewars.com/kata/find-the-middle-element/train/javascript
-      As a part of this Kata, you need to create a function that when provided with a triplet, returns the index of the numerical element that lies between the other two elements.
+      As a part of this Kata, you need to create a function that when provided with a triplet, 
+      returns the index of the numerical element that lies between the other two elements.
 
       The input to the function will be an array of three distinct numbers (Haskell: a tuple).
 
@@ -62,7 +67,7 @@
       gimme([2, 3, 1]) => 0
       2 is the number that fits between 1 and 3 and the index of 2 in the input array is 0.
       
-
+     //Aaron's attempt
       function gimme(arr) {
        return arr.map(function(el){
           return el 
@@ -94,7 +99,7 @@
       /*
       Questions:
       1. why do I need to slice the entire array before sorting? 
-      2. why do I initialize to [1]?
+      2. is [1] initalizing the sort function to the value of 1, or what is the purpose of [1]?
       */
 //------------------------------------------------------------------------------------------------------------------------------
 
@@ -129,13 +134,16 @@
 
     /*
       Question:
-      1. Why does using '<' instead of '>' allow me to not have to check for equality?
+      1. The alternate solution uses '<' instead of '>' like I did. Why does using '<' instead of '>' allow me 
+      to not have to check for equality? The alternate solution skips the step that I had saying if(acc.length === val.length)
       2. Is there a way to know which ('>' or '<') would be better?
     */
 //------------------------------------------------------------------------------------------------------------------------------
       /*
       https://www.codewars.com/kata/58539230879867a8cd00011c/train/javascript
-      Mothers arranged dance party for children in school.On that party there are only mothers and their children.All are having great fun on dancing floor when suddenly all lights went out. It's dark night and no one can see each other.But you were flying nearby and you can see in the dark and have ability to teleport people anywhere you want.
+      Mothers arranged dance party for children in school.On that party there are only mothers and their children.
+      All are having great fun on dancing floor when suddenly all lights went out. It's dark night and no one can see each other.
+      But you were flying nearby and you can see in the dark and have ability to teleport people anywhere you want.
 
       Legend:
       -Uppercase letters stands for mothers,lowercase stand for their children. I.E "A" mothers children are "aaaa".
@@ -161,12 +169,13 @@
 
       /*
         Questions:
-        1. on MDN it says "a is less than b by some ordering criterion" return -1, but here we are saying if a === b return -1. Does the .toUpperCase() make a difference there?
+        1. on MDN it says "a is less than b by some ordering criterion" return -1, but here we are saying if a === b return -1. 
+	Does the .toUpperCase() make a difference there?
 
         My thinking:
         1. use split to create an array from string
-        2. use touppercase() or tolowercase() - But won't this transform upper to lower or vice versa, how do I get them back to
-        either upper or lower?
+        2. use touppercase() or tolowercase() - But won't this transform upper to lower or vice versa, 
+	how do I get them back to either upper or lower?
         3. Use sort function.
 
         I had the components, I just didn't know how to use them :(
@@ -178,7 +187,7 @@
       Build Tower by the following given argument:
       number of floors (integer and always greater than 0).
 
-      Tower block is represented as * see example below.
+      Tower block is represented as '*' - see example below.
           *
          ***
         *****
@@ -227,11 +236,11 @@
 
     /*
       I knew I need an empty array and that I needed to loop through the input 'nFloors'.
-      I knew I needed to add multiply by two.
+      I knew I needed to multiply by two and push the result to the empty array.
 
       I did not know that I needed to make the spaces. 
 
-      I feel like I am again, in the ballpark, but just not sure how to execute the solution. 
+      I feel like I'm again, in the ballpark, but just not sure how to execute the solution. 
     */
 //------------------------------------------------------------------------------------------------------------------------------
 	</script>
