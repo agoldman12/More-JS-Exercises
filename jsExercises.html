@@ -174,14 +174,20 @@
 //------------------------------------------------------------------------------------------------------------------------------
   /*
       https://www.codewars.com/kata/576757b1df89ecf5bd00073b/train/javascript
-      Build Tower
+      Build Tower (should look like a pyramid)
       Build Tower by the following given argument:
       number of floors (integer and always greater than 0).
 
-      Tower block is represented as *
+      Tower block is represented as * see example below.
+          *
+         ***
+        *****
+       *******
 
       JavaScript: returns an Array;
+     */
      
+     //Aaron's solution - onbly builds half the pyramid
       function towerBuilder(nFloors) {
          let result = [];
          for(i = "*"; i.length < nFloors; i +="*"){
@@ -190,7 +196,7 @@
          return result;
       }
       console.log(towerBuilder(5));
- */
+ 
 
     //https://stackoverflow.com/questions/41427688/unable-to-create-the-tower-as-expected
       function towerBuilder(nFloors) {
