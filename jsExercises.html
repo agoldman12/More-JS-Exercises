@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Exercises</title>
+
+	<script>
+		
+//------------------------------------------------------------------------------------------------------------------------
+
+      /*
+      https://www.codewars.com/kata/58223370aef9fc03fd000071/train/javascript
+      Given a number, return a string with dash'-'marks before and after each odd integer, but do not begin or end the string with a dash mark.
+
+      Ex:
+
+      dashatize(274) -> '2-7-4'
+      dashatize(6815) -> '68-1-5'
+      */
+
+      //Aaron's solution - did not pass all tests on codewars
+      function dashatize(num) {
+
+       num = num.toString().split("");
+       
+       return num.map(function(elem){
+        if(num.indexOf(elem) === 0 || num.indexOf(elem) === num.length - 1){
+            return elem;
+          } else if(elem % 2){
+            return "-" + elem + "-"
+          }else {
+            return elem;
+          }
+        }).join("");
+      }
+      console.log(dashatize(974302));
+    
+        //alternate solution - passed all tests on codewars
+        function dashatize2(num) {
+          return num = num.toString().split("").map(function(c){
+            return c % 2 ? "-" + c + "-" :  c ;
+          }).join("").split("-").filter(a => a != "").join("-");
+  
+        };
+        console.log(dashatize2(5311));
+
+        /*
+        Questions:
+        1. Can you explain why the bottom line works? I can see each step by commenting everything after it, but why does that ensure that odd numbers at the start or end of the string won't have dashes?
+
+        2. In my version, I return 'elem' in two different situations. I kinda feel like that's a bad idea. Is that something that happens, or should be avoided?
+        */
+//-------------------------------------------------------------------------------------------------------------------------
+
+      /*
+      https://www.codewars.com/kata/find-the-middle-element/train/javascript
+      As a part of this Kata, you need to create a function that when provided with a triplet, returns the index of the numerical element that lies between the other two elements.
+
+      The input to the function will be an array of three distinct numbers (Haskell: a tuple).
+
+      For example:
+
+      gimme([2, 3, 1]) => 0
+      2 is the number that fits between 1 and 3 and the index of 2 in the input array is 0.
+      
+
+      function gimme(arr) {
+       return arr.map(function(el){
+          return el 
+       })
+       
+      }
+      console.log(gimme([2, 3, 1]));
+*/
+
+      // Codewars solutions: 
+       function gimme(a) {
+         return a.indexOf(a.slice().sort(function(a, b) { 
+            return a - b })[1])
+       }
+       console.log(gimme([83, 100, 14]));
+
+       //alternate Solution 
+       var gimme2 = (inputArray) => {
+          const sortArray = inputArray.slice().sort((a,b) => a - b);
+          for (i in sortArray) {
+            if (inputArray[i] === sortArray[1]) {
+              return inputArray.indexOf(sortArray[1]);
+            }
+          }
+      }; 
+
+      console.log(gimme2([93, 25, 47]));
+
+      /*
+      Questions:
+      1. why do I need to slice the entire array before sorting? 
+      2. why do I initialize to [1]?
+      */
+//------------------------------------------------------------------------------------------------------------------------------
+
+ 	/*
+      https://www.codewars.com/kata/most-digits/train/javascript
+      Find the number with the most digits.
+      If two numbers in the argument array have the same number of digits, return the first one in the array.
+    */
+
+    //Aaron's solution
+    function findLongest(array){
+      return array.reduce(function(acc, val){
+          acc = acc.toString();
+          val = val.toString();
+          if(acc.length === val.length){
+            return Number(acc);
+          }else if(String(acc).length > String(val).length){
+            return Number(acc);
+          }else{
+            return Number(val);
+          }
+         
+      }, 0);
+    }
+    console.log(findLongest([144, 103, 1790, 5]));
+
+    //alternate solution
+    function findLongest2(array){
+      return array.reduce((res, curr) => (String(res).length < String(curr).length) ? curr : res);
+    }
+    console.log(findLongest2([1203, 103, 1340]));
+
+    /*
+      Question:
+      1. Why does using '<' instead of '>' allow me to not have to check for equality?
+      2. Is there a way to know which ('>' or '<') would be better?
+    */
+//------------------------------------------------------------------------------------------------------------------------------
+      /*
+      https://www.codewars.com/kata/58539230879867a8cd00011c/train/javascript
+      Mothers arranged dance party for children in school.On that party there are only mothers and their children.All are having great fun on dancing floor when suddenly all lights went out. It's dark night and no one can see each other.But you were flying nearby and you can see in the dark and have ability to teleport people anywhere you want.
+
+      Legend:
+      -Uppercase letters stands for mothers,lowercase stand for their children. I.E "A" mothers children are "aaaa".
+      -Function input:String contain only letters,Uppercase letters are unique.
+
+      Task:
+      Place all people in alphabetical order where Mothers are followed by their children.I.E "aAbaBb" => "AaaBbb".
+      */
+
+      //https://medium.com/@internetross/dancing-in-the-dark-they-were-a-clever-sort-90e806fa2630 - solution
+      function findChildren(dancers){
+        return dancers
+          .split('')
+          .sort((a, b) => {
+            if (a === b.toUpperCase()) {
+              return -1;
+            } else {
+              return a.toLowerCase() < b.toLowerCase() ? -1 : 1; 
+            }
+          }).join('');
+      };
+      console.log(findChildren("aAbaBb"));
+
+      /*
+        Questions:
+        1. on MDN it says "a is less than b by some ordering criterion" return -1, but here we are saying if a === b return -1. Does the .toUpperCase() make a difference there?
+
+        My thinking:
+        1. use split to create an array from string
+        2. use touppercase() or tolowercase() - But won't this transform upper to lower or vice versa, how do I get them back to
+        either upper or lower?
+        3. Use sort function.
+
+        I had the components, I just didn't know how to use them :(
+      */
+//------------------------------------------------------------------------------------------------------------------------------
+  /*
+      https://www.codewars.com/kata/576757b1df89ecf5bd00073b/train/javascript
+      Build Tower
+      Build Tower by the following given argument:
+      number of floors (integer and always greater than 0).
+
+      Tower block is represented as *
+
+      JavaScript: returns an Array;
+     
+      function towerBuilder(nFloors) {
+         let result = [];
+         for(i = "*"; i.length < nFloors; i +="*"){
+            result.push(i);
+         }
+         return result;
+      }
+      console.log(towerBuilder(5));
+ */
+
+    //https://stackoverflow.com/questions/41427688/unable-to-create-the-tower-as-expected
+      function towerBuilder(nFloors) {
+      var space = "";
+      var star = "";
+      var result = [];
+      for (var i = 1; i <= nFloors; i++) {
+        space = (" ").repeat(nFloors - i);
+        star = ("*").repeat((2 * i) - 1);
+        result.push(space + star + space);
+      }
+      return result;
+    }
+    console.log(towerBuilder(5));
+
+
+    //alternate solution
+    function towerBuilder2(nFloors) {
+      var tower = [];
+      for(i = 0; i < nFloors; i++){
+        tower.push(" ".repeat(nFloors - i - 1)
+              + "*".repeat((i * 2) + 1)
+              + " ".repeat(nFloors - i - 1));
+      }
+      return tower;
+    }
+    console.log(towerBuilder2(10));
+
+    /*
+      I knew I need an empty array and that I needed to loop through the input 'nFloors'.
+      I knew I needed to add multiply by two.
+
+      I did not know that I needed to make the spaces. 
+
+      I feel like I am again, in the ballpark, but just not sure how to execute the solution. 
+    */
+//------------------------------------------------------------------------------------------------------------------------------
+	</script>
+</head>
+<body>
+
+</body>
+</html>
