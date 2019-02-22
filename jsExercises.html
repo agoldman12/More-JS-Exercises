@@ -175,7 +175,7 @@
         My thinking:
         1. use split to create an array from string
         2. use touppercase() or tolowercase() - But won't this transform upper to lower or vice versa, 
-	how do I get them back to either upper or lower?
+	how do I get them back to either upper or lower?  **LOOK UP WHETHER A METHOD RETURNS A NEW ARRAY / INSTANCE OR NOT**
         3. Use sort function.
 
         I had the components, I just didn't know how to use them :(
@@ -196,7 +196,7 @@
       JavaScript: returns an Array;
      */
      
-     //Aaron's solution - onbly builds half the pyramid
+     //Aaron's solution - onbly builds half the pyramid - set i = to a number not a symbol!
       function towerBuilder(nFloors) {
          let result = [];
          for(i = "*"; i.length < nFloors; i +="*"){
